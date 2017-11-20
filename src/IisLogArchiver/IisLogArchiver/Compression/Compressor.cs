@@ -1,4 +1,5 @@
-﻿using IisLogArchiver.Interfaces;
+﻿using IisLogArchiver.Common.Extensions;
+using IisLogArchiver.Interfaces;
 using log4net;
 using System;
 using System.Diagnostics;
@@ -59,7 +60,7 @@ namespace IisLogArchiver.Compression
 
             var archiveName = Path.GetFileName(compressTo);
             watch.Stop();
-            Log.Info($"Compressing {archiveName} took {watch.Elapsed.Minutes}m {watch.Elapsed.Seconds}s");
+            Log.Info($"Compressing {archiveName} took {watch.ElapsedFmtTimeHMS()}");
             return failed;
         }
 

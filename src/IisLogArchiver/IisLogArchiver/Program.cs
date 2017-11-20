@@ -1,12 +1,11 @@
 ﻿using Autofac;
 using CommandLine;
 using CommandLine.Text;
+using IisLogArchiver.Common.Extensions;
 using IisLogArchiver.Interfaces;
 using log4net;
-using log4net.Config;
 using System;
 using System.Diagnostics;
-using System.IO;
 
 namespace IisLogArchiver
 {
@@ -16,7 +15,10 @@ namespace IisLogArchiver
 
         private static void Main(string[] args)
         {
-            InitializeLogger();
+            Log4NetExtension.InitializeLoggersFromDefaultFile();
+            Log = LogManager.GetLogger(typeof(Program));
+            Log.Info("Logging init");
+
             var options = ParseCommandlineArgs(args, "IisLogArchiver");
 
             try
@@ -60,20 +62,8 @@ namespace IisLogArchiver
                 var archives = scope.Resolve<IArchiveSettings>().SettingsRootObject.Archives;
                 scope.Resolve<IArchiver>().ProcessLogsToArchives(archives);
                 watch.Stop();
-                Log.Info($"Exit program normally. Took: {watch.Elapsed.Hours}h {watch.Elapsed.Minutes}m {watch.Elapsed.Seconds}s");
+                Log.Info($"Exit program normally. Took: {watch.ElapsedFmtTimeHMS()}");
             }
-        }
-
-        private static void InitializeLogger()
-        {
-            if (LogManager.GetCurrentLoggers().Length == 0)
-            {
-                var path = AppDomain.CurrentDomain.BaseDirectory;
-                var configFile = path + "log4net.config";
-                XmlConfigurator.Configure(new FileInfo(configFile));
-            }
-            Log = LogManager.GetLogger(typeof(Program));
-            Log.Info("Logging init");
         }
     }
 }

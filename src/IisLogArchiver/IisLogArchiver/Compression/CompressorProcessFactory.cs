@@ -12,7 +12,8 @@ namespace IisLogArchiver.Compression
         public CompressorProcessFactory()
         {
             //todo inject path
-            _sevenzipPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "7za.exe");
+            _sevenzipPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"C:\Program Files\7-Zip\7z.exe");
+            //_sevenzipPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "7za.exe");
         }
 
         public ICustomProcessStartInfo CreateCompressProcessInfo(string compressTo, string compressFrom)
