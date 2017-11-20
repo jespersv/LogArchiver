@@ -1,0 +1,16 @@
+{
+  "archives": [
+    {
+      "filePath": "C:\\inetpub\\logs\\LogFiles\\W3SVC5",
+      "archivePath": "C:\\inetpub\\logs\\LogFiles\\W3SVC5\\archive",
+      "archiveName": "site1name",
+      "deleteArchivedFiles": "false"
+    },
+    {
+      "filePath": "D:\\trash\\images\\loggerplayground",
+      "archivePath": "D:\\trash\\images\\loggerplayground\\archive",
+      "archiveName": "site2name",
+      "deleteArchivedFiles": "true"
+    }
+  ]
+}

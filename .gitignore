@@ -2,4 +2,10 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+/src/IisLogArchiver/IisLogArchiver/bin
 /src/IisLogArchiver/IisLogArchiver/obj
+/src/IisLogArchiver/IisLogArchiver/7za.exe
+/src/IisLogArchiver/IisLogArchiverTests/bin
+/src/IisLogArchiver/IisLogArchiverTests/obj
+/src/IisLogArchiver/packages
+/src/IisLogArchiver/playground

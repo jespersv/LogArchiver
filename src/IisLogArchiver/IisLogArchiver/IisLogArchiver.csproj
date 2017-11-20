@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0A759BD9-685C-4878-8EBC-27F8512D7177}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>IisLogArchiver</RootNamespace>
+    <AssemblyName>IisLogArchiver</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.0\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="CommandLine, Version=1.9.71.2, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommandLineOptions.cs" />
+    <Compile Include="Common\EnvironmentProvider.cs" />
+    <Compile Include="Compression\CustomProcess.cs" />
+    <Compile Include="Compression\CustomProcessStartInfo.cs" />
+    <Compile Include="Compression\Interfaces\ICustomProcessStartInfo.cs" />
+    <Compile Include="Compression\Interfaces\ICompressProcessFactory.cs" />
+    <Compile Include="Compression\Interfaces\ICustomProcess.cs" />
+    <Compile Include="Compression\Interfaces\IProcessStarter.cs" />
+    <Compile Include="Compression\ProcessStarter.cs" />
+    <Compile Include="Compression\CompressorProcessFactory.cs" />
+    <Compile Include="Core\Archiver.cs" />
+    <Compile Include="Compression\Interfaces\ICompressor.cs" />
+    <Compile Include="Core\BaseSettings.cs" />
+    <Compile Include="FileHandling\Interfaces\IFileBatchProvider.cs" />
+    <Compile Include="FileHandling\FileBatchProvider.cs" />
+    <Compile Include="Core\Interfaces\IArchiveSettings.cs" />
+    <Compile Include="Common\DirectoryProvider.cs" />
+    <Compile Include="FileHandling\FileGatherer.cs" />
+    <Compile Include="FileHandling\FileNameParser.cs" />
+    <Compile Include="Common\FileProvider.cs" />
+    <Compile Include="Common\Interfaces\IEnvironmentProvider.cs" />
+    <Compile Include="Common\Interfaces\IFileProvider.cs" />
+    <Compile Include="FileHandling\Interfaces\IFileNameParser.cs" />
+    <Compile Include="Common\Interfaces\IDirectoryProvider.cs" />
+    <Compile Include="FileHandling\Interfaces\IFileGatherer.cs" />
+    <Compile Include="FileHandling\Interfaces\IArchiveNameProvider.cs" />
+    <Compile Include="FileHandling\Interfaces\IDirectoryDeleter.cs" />
+    <Compile Include="FileHandling\Interfaces\IFileDeleter.cs" />
+    <Compile Include="Common\ThreadProvider.cs" />
+    <Compile Include="Common\Interfaces\IThreadProvider.cs" />
+    <Compile Include="IisLogArchiverBootstrapper.cs" />
+    <Compile Include="Common\Interfaces\ITimeProvider.cs" />
+    <Compile Include="FileHandling\ArchiveNameProvider.cs" />
+    <Compile Include="FileHandling\DirectoryDeleter.cs" />
+    <Compile Include="FileHandling\FileDeleter.cs" />
+    <Compile Include="Core\Interfaces\IArchiver.cs" />
+    <Compile Include="IisLogArchiverGlobal.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Core\ArchiveSettings.cs" />
+    <Compile Include="Common\TimeProvider.cs" />
+    <Compile Include="Compression\Compressor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="archives.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="7za.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
